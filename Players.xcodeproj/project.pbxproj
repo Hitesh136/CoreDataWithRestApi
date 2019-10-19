@@ -25,6 +25,7 @@
 		9D993C1323577A6B006C3B73 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D993C1223577A6B006C3B73 /* Storyboard.swift */; };
 		9D993C1623577B15006C3B73 /* Object+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D993C1523577B15006C3B73 /* Object+Helper.swift */; };
 		9D993C1823577E8E006C3B73 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D993C1723577E8E006C3B73 /* BaseNavigationController.swift */; };
+		9DD1BDF2235B558D004ADDCD /* UserEntity+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1BDF1235B558D004ADDCD /* UserEntity+Helper.swift */; };
 		9DF6A82523577FFC00B490A7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6A82423577FFC00B490A7 /* User.swift */; };
 		9DF6A8282357817900B490A7 /* ServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6A8272357817900B490A7 /* ServiceHandler.swift */; };
 		9DF6A82A2357845F00B490A7 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6A8292357845F00B490A7 /* NetworkConstants.swift */; };
@@ -59,6 +60,7 @@
 		9D993C1223577A6B006C3B73 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		9D993C1523577B15006C3B73 /* Object+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Helper.swift"; sourceTree = "<group>"; };
 		9D993C1723577E8E006C3B73 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		9DD1BDF1235B558D004ADDCD /* UserEntity+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+Helper.swift"; sourceTree = "<group>"; };
 		9DF6A82423577FFC00B490A7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9DF6A8272357817900B490A7 /* ServiceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceHandler.swift; sourceTree = "<group>"; };
 		9DF6A8292357845F00B490A7 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
@@ -140,7 +142,6 @@
 			children = (
 				9D993C1423577B07006C3B73 /* Extensions */,
 				9D993C1023577983006C3B73 /* BaseViewController.swift */,
-				9D993C1223577A6B006C3B73 /* Storyboard.swift */,
 				9D993C1723577E8E006C3B73 /* BaseNavigationController.swift */,
 				9DF6A8272357817900B490A7 /* ServiceHandler.swift */,
 				9DF6A8292357845F00B490A7 /* NetworkConstants.swift */,
@@ -189,6 +190,7 @@
 		9D993C08235778AA006C3B73 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				9D993C1223577A6B006C3B73 /* Storyboard.swift */,
 				9D993BFA2357786C006C3B73 /* LaunchScreen.storyboard */,
 				9D993C0B23577934006C3B73 /* User.storyboard */,
 			);
@@ -276,6 +278,7 @@
 			children = (
 				9DF6A83E2357935D00B490A7 /* UserEntity+CoreDataClass.swift */,
 				9DF6A83F2357935D00B490A7 /* UserEntity+CoreDataProperties.swift */,
+				9DD1BDF1235B558D004ADDCD /* UserEntity+Helper.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				9D993C1323577A6B006C3B73 /* Storyboard.swift in Sources */,
 				9D993C1123577983006C3B73 /* BaseViewController.swift in Sources */,
 				9D3A2D42235A2D210047089D /* UserDetailViewController.swift in Sources */,
+				9DD1BDF2235B558D004ADDCD /* UserEntity+Helper.swift in Sources */,
 				9DF6A837235791AB00B490A7 /* Constants.swift in Sources */,
 				9D3A2D3E2358D67C0047089D /* SceneDelegate.swift in Sources */,
 				9DF6A8282357817900B490A7 /* ServiceHandler.swift in Sources */,

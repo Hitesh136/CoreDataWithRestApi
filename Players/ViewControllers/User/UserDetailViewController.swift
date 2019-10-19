@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UserDetailViewControllerDelegate: class {
+	func update(userOfId userId: Int?)
+}
+
 class UserDetailViewController: BaseViewController {
 
 	// MARK:- Outlets
@@ -18,6 +22,7 @@ class UserDetailViewController: BaseViewController {
 	@IBOutlet weak var favBarButton: UIBarButtonItem!
 	
 	// MARK:- Properties
+	weak var delegate: UserDetailViewControllerDelegate?
 	var userViewModel = UserViewModel()
 	
 	// MARK:- View Life Cycles
@@ -39,6 +44,7 @@ extension UserDetailViewController {
 			let message = success ? AlertMessage.favMarked : AlertMessage.favMarkedFail
 			self.configureNavigationBar()
 			CommonClass.alert(title: nil, message: message.rawValue)
+			self.delegate?.update(userOfId: self.userViewModel.userId)
 		}
 	}
 }

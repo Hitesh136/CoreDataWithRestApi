@@ -62,7 +62,21 @@ extension UsersViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let userDetailsViewController: UserDetailViewController = Storyboard.user.getViewController()
 		userDetailsViewController.userViewModel = viewModel.userViewModels[indexPath.row]
+		userDetailsViewController.delegate = self
 		self.navigationController?.pushViewController(userDetailsViewController, animated: true)
 	}
 }
 
+// MARK:- UserDetailViewControllerDelegate
+extension UsersViewController: UserDetailViewControllerDelegate {
+	func update(userOfId userId: Int?) {
+		guard let userId = userId else {
+			return
+		}
+		viewModel.update(userOfId: userId) { (success) in
+			if success {
+				tableView.reloadData()
+			}
+		}
+	}
+}

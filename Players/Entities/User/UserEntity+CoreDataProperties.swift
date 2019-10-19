@@ -22,17 +22,5 @@ extension UserEntity {
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
 	@NSManaged public var isFav: Bool
-
 }
 
-
-extension UserEntity {
-	func toUserModel() -> User {
-		
-		return User(id: Int(userId),
-					email: email,
-					firstName: firstName,
-					lastName: lastName,
-					isFav: isFav)
-	}
-}

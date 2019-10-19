@@ -16,6 +16,6 @@ enum EntityName: String {
 }
 
 enum AlertMessage: String {
-	case favMarked = "User has been marked fav"
-	case favMarkedFail = "User can't marked fav"
+	case favMarked = "Favs has been updated"
+	case favMarkedFail = "Favs updation failed"
 }

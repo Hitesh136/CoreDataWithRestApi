@@ -49,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var documentDirectoryPath: String {
 		let url = persistentContainer.persistentStoreCoordinator.persistentStores.first?.url
-		print(url)
 		return url?.absoluteString ?? ""
 	}
 }
@@ -61,7 +60,6 @@ extension AppDelegate {
 	func showRootViewController() {
 		let userStoryboard = UIStoryboard(name: "User", bundle: nil)
 		let usersViewController = userStoryboard.instantiateViewController(identifier: UsersViewController.className) as! UsersViewController
-//		let usersViewController: UsersViewController = Storyboard.user.getViewController()
 		let usersNavigationController = BaseNavigationController(rootViewController: usersViewController)
 		window?.rootViewController = usersNavigationController
 		window?.makeKeyAndVisible()

@@ -19,6 +19,5 @@ enum Storyboard: String {
 		} else {
 			fatalError("View Controller \(T.className) not found")
 		}
-		
 	}
 }

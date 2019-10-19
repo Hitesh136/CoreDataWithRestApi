@@ -11,18 +11,55 @@ import CoreData
 
 class UserDBManager {
 	
-	func fetchAllUsers(onContext context: NSManagedObjectContext? = nil,
-					   completion: @escaping (Result<[User], Error>) -> ()) {
+	func fetchAllUsers(onContext context: NSManagedObjectContext? = nil) -> Result<[UserEntity], Error>{
 		
 		let context = context ?? appDelegate.mainContext
 		let fetchRequest = NSFetchRequest<UserEntity>(entityName: EntityName.user.rawValue)
 		do {
 			let result = try context.fetch(fetchRequest)
-			completion(.success(result.map{ $0.toUserModel() }))
+			return .success(result)
 		} catch let error {
 			print(error.localizedDescription)
-			completion(.failure(error))
+			return .failure(error)
 		}
+	}
+
+	/*
+	save the users into db.
+	*/
+	func save(users: [User],
+			  replaceOldData: Bool = false,
+			  onContext context: NSManagedObjectContext? = nil) -> [User]{
+
+		let context = context ?? appDelegate.mainContext
+		
+		//Fetch all saved users
+		let allUserEntities = fetchAllUsers(onContext: context)
+		guard case .success(let userEntities) = allUserEntities  else {
+			return []
+		}
+			
+		//Create a hashmap for make search in O(1) Complexity
+		var dict = [Int16: UserEntity]()
+		userEntities.forEach{ dict[$0.userId] = $0 }
+		var results = [User]()
+		for newUser in users {
+			guard let userId = newUser.id else {
+				continue
+			} 
+			var userEntity: UserEntity
+			if let savedUser = dict[Int16(userId)] {
+				// if replaceOldData is true than use the new data
+				userEntity = replaceOldData ? newUser.toEntity() : savedUser
+			} else {
+				userEntity = newUser.toEntity(onContext: context)
+			}
+			
+			let userModel = userEntity.toUserModel()
+			results.append(userModel)
+		}
+		try? context.save()
+		return results
 	}
 	
 	func fetch(userOfId userId: Int,
@@ -30,8 +67,6 @@ class UserDBManager {
 		
 		let context = context ?? appDelegate.mainContext
 		let fetchRequest = NSFetchRequest<UserEntity>(entityName: EntityName.user.rawValue)
-		
-		let _userId = Int16(userId)
 		fetchRequest.predicate = NSPredicate(format: "userId == %d", userId)
 		do {
 			let result = try context.fetch(fetchRequest)
@@ -63,7 +98,5 @@ class UserDBManager {
 			print(error.localizedDescription)
 			completion(false)
 		}
-			
-		
 	}
 }

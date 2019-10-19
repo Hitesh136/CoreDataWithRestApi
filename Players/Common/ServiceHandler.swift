@@ -36,32 +36,34 @@ class ServiceHandler<T: Codable> {
 		
 		URLSession.shared.dataTask(with: finalURL) { (data, response, error) in
 		
-			CommonClass.hideLoader()
-			guard let httpResponse = response as? HTTPURLResponse,
-				let responseData = data else {
-				completion(.failure(.unknown))
-				return
-			}
-			
-			let statusCode = httpResponse.statusCode
-			if (200...204).contains(statusCode) {
-				let jsonDecoder = JSONDecoder()
-				do {
-					let decodedObject = try jsonDecoder.decode(T.self, from: responseData)
-					completion(.success(decodedObject))
-				} catch let error {
-					print(error.localizedDescription)
-					completion(.failure(.decodingError))
+			DispatchQueue.main.async {
+				CommonClass.hideLoader()
+				guard let httpResponse = response as? HTTPURLResponse,
+					let responseData = data else {
+						completion(.failure(.unknown))
+						return
 				}
-			} else if statusCode == 500 {
-				print("Something went wrong with server")
-				completion(.failure(.internalServerError))
-			} else if statusCode == 401 {
-				print("Session expire")
-				completion(.failure(.sessionExpire))
-			} else {
-				print(error?.localizedDescription ?? "")
-				completion(.failure(.unknown))
+				
+				let statusCode = httpResponse.statusCode
+				if (200...204).contains(statusCode) {
+					let jsonDecoder = JSONDecoder()
+					do {
+						let decodedObject = try jsonDecoder.decode(T.self, from: responseData)
+						completion(.success(decodedObject))
+					} catch let error {
+						print(error.localizedDescription)
+						completion(.failure(.decodingError))
+					}
+				} else if statusCode == 500 {
+					print("Something went wrong with server")
+					completion(.failure(.internalServerError))
+				} else if statusCode == 401 {
+					print("Session expire")
+					completion(.failure(.sessionExpire))
+				} else {
+					print(error?.localizedDescription ?? "")
+					completion(.failure(.unknown))
+				}
 			}
 		}.resume()
 	}

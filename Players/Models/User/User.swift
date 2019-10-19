@@ -9,12 +9,12 @@
 import Foundation
 import CoreData
 
-// MARK: - User
+// MARK: - UserResponse
 struct UserResponse: Codable {
 	let data: [User]
 }
 
-// MARK: - Datum
+// MARK: - User
 struct User: Codable {
 	let id: Int?
 	let email, firstName, lastName: String?

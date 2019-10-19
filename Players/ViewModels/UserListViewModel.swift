@@ -31,4 +31,19 @@ class UserListViewModel {
 			}
 		}
 	}
+	
+	func update(userOfId userId: Int, completion: (Bool) -> ()) {
+		guard let userIndex = userViewModels.firstIndex(where: { $0.userId == userId }) else {
+			completion(false)
+			return
+		}
+		userDataManager.get(userOfId: userId) { (user) in
+			if let _user = user {
+				userViewModels[userIndex].user = _user
+				completion(true)
+			} else {
+				completion(false)
+			}
+		}
+	}
 }
