@@ -8,6 +8,9 @@
 
 import Foundation
 
+/*
+This class provide user's data either from server or local.
+*/
 class UserDataManager {
 
 	let userServiceManager = UserServiceManger()

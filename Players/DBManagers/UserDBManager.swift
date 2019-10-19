@@ -9,6 +9,9 @@
 import Foundation
 import CoreData
 
+/*
+This class maintain user's data base operations.
+*/
 class UserDBManager {
 	
 	func fetchAllUsers(onContext context: NSManagedObjectContext? = nil) -> Result<[UserEntity], Error>{
