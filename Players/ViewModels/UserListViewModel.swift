@@ -37,9 +37,9 @@ class UserListViewModel {
 			completion(false)
 			return
 		}
-		userDataManager.get(userOfId: userId) { (user) in
+		userDataManager.get(userOfId: userId) { [weak self] (user) in
 			if let _user = user {
-				userViewModels[userIndex].user = _user
+                self?.userViewModels[userIndex].user = _user
 				completion(true)
 			} else {
 				completion(false)
