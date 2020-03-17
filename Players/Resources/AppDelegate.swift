@@ -66,4 +66,7 @@ extension AppDelegate {
 	}
 }
 
-//Dummy commnet 
+//Dummy commnet
+
+// Dummy comment 2
+
