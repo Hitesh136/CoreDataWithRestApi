@@ -32,7 +32,7 @@ class UserListViewModel {
 		}
 	}
 	
-	func update(userOfId userId: Int, completion: (Bool) -> ()) {
+	func update(userOfId userId: Int, completion: @escaping (Bool) -> ()) {
 		guard let userIndex = userViewModels.firstIndex(where: { $0.userId == userId }) else {
 			completion(false)
 			return

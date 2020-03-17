@@ -75,7 +75,7 @@ extension UsersViewController: UserDetailViewControllerDelegate {
 		}
 		viewModel.update(userOfId: userId) { (success) in
 			if success {
-				tableView.reloadData()
+                self.tableView.reloadData()
 			}
 		}
 	}
